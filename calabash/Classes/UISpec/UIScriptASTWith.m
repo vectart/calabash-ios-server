@@ -145,9 +145,7 @@
 
   if (self.valueType == UIScriptLiteralTypeString) {
     LPWebQueryType type = LPWebQueryTypeCSS;
-    if ([[self selectorName] isEqualToString:@"text"]) {
-      type = LPWebQueryTypeFreeText;
-    } else if ([[self selectorName] isEqualToString:@"xpath"]) {
+    if ([[self selectorName] isEqualToString:@"xpath"]) {
       type = LPWebQueryTypeXPATH;
     } else if ([[self selectorName] isEqualToString:@"css"]) {
       type = LPWebQueryTypeCSS;
@@ -228,6 +226,12 @@
           [res addObjectsFromArray:[self handleWebView:(UIView<LPWebViewProtocol> *) v
                                               visibility:visibility]];
           continue;
+      }
+
+      if ([LPWebViewUtils isWebView:v]) {
+        [res addObjectsFromArray:[self handleWebView:(UIView<LPWebViewProtocol> *) v
+                                          visibility:visibility]];
+        continue;
       }
 
       if (self.selectorName) {

@@ -1,3 +1,47 @@
+### 0.19.1
+
+This release _really_ removes support form "marked" as a free text
+matcher on WebViews.
+
+Also, the rect:x and rect:y JSON returned by queries on WebViews
+now (correctly) indicate the top left corner of the element.
+Previously, rect:x and rect:y referred to the _center_.  This is
+breaking change.  After a long discussion, we decided that this is
+a long standing _bug_ rather than a change in the API; an API change
+would require a non-patch release.
+
+* Remove special :marked handling from WebView queries - take 2 #355
+* WebQuery: rect x and y should indicate the top-left corner of the
+  element #354
+* Increment LPTestTarget CFBundleVersion for every build #352
+* LPScreenshot: handle exceptions when calling snapshot API #351
+* Scenarios for testing Cucumber embed #350
+* Response: set the content type to application/json #349
+* Cucumber: bump version to 2.0 #347
+* LPDevice: detecting 6se and iPad Pro 9in #346
+
+### 0.19.0
+
+This release removes support for "marked" as a free text matcher on
+WebViews. See this issue for details:
+
+https://github.com/calabash/calabash-ios/issues/735
+
+* Update Objective-C test stack #343
+* LPVersionRoute: remove reference to calabash\_version #342
+* LPDevice: fix ip address reporting #340
+* Fix touch coordinates for Zoomed display mode and apps that are not
+  optimized for iPhone 6 screen sizes #339
+* LPJSONUtils: set max and min float to avoid JSON parse errors #338
+* Remove special :marked handling from WebView queries #337
+
+### 0.18.2
+
+Thanks @MortenGregersen and @kaorijp for testing #334
+
+* Screenshot: use drawViewHierarchy when possible #334
+* Bonjour: create a unique service instance name #332
+
 ### 0.18.1
 
 This release has no new features.

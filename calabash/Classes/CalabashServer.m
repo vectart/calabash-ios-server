@@ -204,7 +204,11 @@
 
     _httpServer = [[[LPHTTPServer alloc] init] retain];
 
-    [_httpServer setName:@"Calabash Server"];
+    NSString *uuid = [[NSProcessInfo processInfo] globallyUniqueString];
+    NSString *token = [uuid componentsSeparatedByString:@"-"][0];
+    NSString *serverName = [NSString stringWithFormat:@"CalabashServer-%@", token];
+    [_httpServer setName:serverName];
+
     [_httpServer setType:@"_http._tcp."];
     [_httpServer setConnectionClass:[LPRouter class]];
 
@@ -256,7 +260,7 @@
     LPLogError(@"Error starting Calabash HTTP Server: %@", error);
   } else {
     LPLogDebug(@"Calabash iOS server is listening on: %@ port %@",
-               [[LPDevice sharedDevice] getIPAddress:YES],
+               [[LPDevice sharedDevice] getIPAddress],
                @([_httpServer port]));
   }
 }
