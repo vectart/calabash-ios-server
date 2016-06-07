@@ -148,7 +148,10 @@ static NSCharacterSet *curlyBrackets = nil;
           NSUInteger val = [numVal unsignedIntegerValue];
           [_res addObject:[[[UIScriptASTIndex alloc] initWithIndex:val]
                   autorelease]];
-        } else if ([@"css" isEqualToString:typeIfPresent] || [@"xpath" isEqualToString:typeIfPresent] || [@"job" isEqualToString:typeIfPresent]) {
+        } else if ([@"css" isEqualToString:typeIfPresent] ||
+                   [@"xpath" isEqualToString:typeIfPresent] ||
+                   [@"job" isEqualToString:typeIfPresent] ||
+                   [@"eval" isEqualToString:typeIfPresent]) {
           UIScriptASTWith *w = [[[UIScriptASTWith alloc]
                   initWithSelectorName:typeIfPresent] autorelease];
           w.valueType = UIScriptLiteralTypeString;

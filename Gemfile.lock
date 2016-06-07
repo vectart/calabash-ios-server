@@ -83,6 +83,3 @@ DEPENDENCIES
   run_loop!
   travis (>= 1.8.1, < 2.0)
   xcpretty
-
-BUNDLED WITH
-   1.12.3

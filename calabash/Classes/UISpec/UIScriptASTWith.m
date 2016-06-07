@@ -89,6 +89,10 @@
     queryType = LPWebQueryTypeJob;
   }
   
+  if ([self.selectorName isEqualToString:@"eval"]){
+    queryType = LPWebQueryTypeEval;
+  }
+  
   if (iframeSelector == nil) {
     LPLogError(@"Missing query string for IFrame Query");
     return [NSArray array];
@@ -151,6 +155,8 @@
       type = LPWebQueryTypeCSS;
     } else if ([[self selectorName] isEqualToString:@"job"]) {
       type = LPWebQueryTypeJob;
+    } else if ([[self selectorName] isEqualToString:@"eval"]) {
+      type = LPWebQueryTypeEval;
     }
 
     return [LPWebQuery arrayByEvaluatingQuery:(NSString *) self.objectValue

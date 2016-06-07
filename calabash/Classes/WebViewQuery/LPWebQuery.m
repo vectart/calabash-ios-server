@@ -56,6 +56,10 @@
       jsString = [NSString stringWithFormat:LP_QUERY_JS,query,@"job",@"", frameSelector];
       break;
 
+    case LPWebQueryTypeEval:
+      jsString = [NSString stringWithFormat:LP_QUERY_JS,query,@"eval",@"", frameSelector];
+      break;
+      
     default:
       return nil;
   }
@@ -65,7 +69,7 @@
   NSString *output = [webView calabashStringByEvaluatingJavaScript:jsString];
 
   NSDictionary *queryDictionary = [LPJSONUtils deserializeDictionary:output];
-  if (queryDictionary != NULL && queryDictionary != nil && queryDictionary[@"job"] != nil) {
+  if (queryDictionary != NULL && queryDictionary != nil && (queryDictionary[@"job"] != nil || queryDictionary[@"result"] != nil)) {
     return @[queryDictionary];
   }
   
